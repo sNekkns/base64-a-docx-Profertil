@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="script.js">
+    <title>Decode base64</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Convertidor base64 &gt; docx</h1>
+        <h2>Julian Orlando</h2>
+        <img src="https://www.profertil.com.ar/wp-content/uploads/2020/06/logo-profertil-05-1.png" alt="profertil-logo" class="profertilImg">
+        <form action="decode.php" method="post">
+            <label for="base64">Base64:</label>
+            <textarea id="base64" name="base64" rows="10"></textarea>
+            <label for="filename">Nombre de archivo:</label>
+            <input type="text" id="filename" name="filename" placeholder="Profertil" />
+            <button id="download-btn">Descargar</button>
+        </form>
+    </div>
+
+    <script>
+        const base64Input = document.getElementById("base64");
+        const filenameInput = document.getElementById("filename");
+
+        // Actualizar el valor del placeholder del input del nombre de archivo
+        // cada vez que se escribe en el textarea del código base64
+        base64Input.addEventListener("input", function() {
+            const code = base64Input.value.trim();
+            const semicolonPos = code.indexOf(";");
+            if (semicolonPos !== -1) {
+                const filename = code.substring(0, semicolonPos);
+                filenameInput.placeholder = filename;
+            }
+        });
+    </script>
+</body>
+
+</html>
