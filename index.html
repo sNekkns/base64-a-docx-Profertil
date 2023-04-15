@@ -13,7 +13,7 @@
 
 <body>
     <div class="container">
-        <h1>Convertidor base64 &gt; docx</h1>
+        <h1>Convertidor base64 > docx</h1>
         <h2>Julian Orlando</h2>
         <img src="https://www.profertil.com.ar/wp-content/uploads/2020/06/logo-profertil-05-1.png" alt="profertil-logo"
             class="profertilImg">
@@ -23,35 +23,10 @@
             <textarea id="base64" name="base64" rows="10"></textarea>
             <label for="filename">Nombre de archivo:</label>
             <input type="text" id="filename" name="filename" placeholder="Profertil" />
-            
             <button id="download-btn">Descargar</button>
         </form>
     </div>
-
-    <script>
-        const clearBtn = document.getElementById("clear-btn");
-        clearBtn.addEventListener("click", function () {
-            base64Input.value = "";
-            filenameInput.value = "";
-            filenameInput.placeholder = "Profertil";
-        });
-    </script>
-
-    <script>
-        const base64Input = document.getElementById("base64");
-        const filenameInput = document.getElementById("filename");
-
-        // Actualizar el valor del placeholder del input del nombre de archivo
-        // cada vez que se escribe en el textarea del código base64
-        base64Input.addEventListener("input", function () {
-            const code = base64Input.value.trim();
-            const semicolonPos = code.indexOf(";");
-            if (semicolonPos !== -1) {
-                const filename = code.substring(0, semicolonPos);
-                filenameInput.placeholder = filename;
-            }
-        });
-    </script>
+    <script src="formulario.js"></script>
 </body>
 
 </html>
