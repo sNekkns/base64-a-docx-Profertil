@@ -5,24 +5,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://www.profertil.com.ar/wp-content/uploads/2020/05/ico-profertil-02.png" type="image/x-icon" />
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="script.js">
-    <title>Decode base64</title>
+    <title>Base64 Convertidor</title>
 </head>
 
 <body>
     <div class="container">
         <h1>Convertidor base64 &gt; docx</h1>
         <h2>Julian Orlando</h2>
-        <img src="https://www.profertil.com.ar/wp-content/uploads/2020/06/logo-profertil-05-1.png" alt="profertil-logo" class="profertilImg">
+        <img src="https://www.profertil.com.ar/wp-content/uploads/2020/06/logo-profertil-05-1.png" alt="profertil-logo"
+            class="profertilImg">
         <form action="decode.php" method="post">
-            <label for="base64">Base64:</label>
+            <label for="base64">Base64: </label>
+            <button type="button" id="clear-btn" class="limpiar">Limpiar</button>
             <textarea id="base64" name="base64" rows="10"></textarea>
             <label for="filename">Nombre de archivo:</label>
             <input type="text" id="filename" name="filename" placeholder="Profertil" />
+            
             <button id="download-btn">Descargar</button>
         </form>
     </div>
+
+    <script>
+        const clearBtn = document.getElementById("clear-btn");
+        clearBtn.addEventListener("click", function () {
+            base64Input.value = "";
+            filenameInput.value = "";
+            filenameInput.placeholder = "Profertil";
+        });
+    </script>
 
     <script>
         const base64Input = document.getElementById("base64");
@@ -30,7 +43,7 @@
 
         // Actualizar el valor del placeholder del input del nombre de archivo
         // cada vez que se escribe en el textarea del código base64
-        base64Input.addEventListener("input", function() {
+        base64Input.addEventListener("input", function () {
             const code = base64Input.value.trim();
             const semicolonPos = code.indexOf(";");
             if (semicolonPos !== -1) {
